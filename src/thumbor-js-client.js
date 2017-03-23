@@ -14,6 +14,27 @@ ThumborJsClient = (function() {
 	};
 
 	/**
+	 * Adds /smart
+	 * @returns {Client}
+	 */
+	Client.prototype.smart = function() {
+		this.command.push('smart');
+		return this;
+	}
+
+	/**
+	 * Adds filters
+	 */
+	Client.prototype.filters = function(filters) {
+		var filterCommand = "filters";
+		array.forEach(function(element) {
+			filterCommand += ":" + element;
+		}, filters);
+		this.command.push(filterCommand);
+		return this;
+	}
+
+	/**
 	 * Adds /full-fit-in/{width}*{height}. (requires width and height)
 	 *
 	 * @param width
